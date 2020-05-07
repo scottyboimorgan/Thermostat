@@ -6,7 +6,6 @@
 
 import java.io.*;
 import java.util.*;
-
 // Programmable Thermostat
 public class Thermostat
 {

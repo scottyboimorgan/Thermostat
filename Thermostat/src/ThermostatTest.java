@@ -4,6 +4,9 @@
 // JUnit for Thermostat.java
 //
 // NOT COMPLETE (SEPT 2014)
+/**
+ * Edited by Scott Morgan, Amine Bourdi, and Nestor Maldonado
+ */
 
 import org.junit.*;
 
@@ -78,5 +81,33 @@ public class ThermostatTest
         thermo.setTimeSinceLastRun (12);
         // Run the test
         assertTrue (thermo.turnHeaterOn (settings));
+    }
+
+    @Test public void testCACCFT()
+    {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+        thermo.setCurrentTemp (70);
+        thermo.setTimeSinceLastRun (7);
+        thermo.setMinLag (7);
+        thermo.setOverride (false);
+        thermo.setRegulator(true);
+        thermo.setOverTemp (70);
+        assertFalse (thermo.turnHeaterOn (settings));
+    }
+
+    @Test public void testCACCTF()
+    {
+        settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
+        thermo.setPeriod (Period.MORNING);
+        thermo.setDay (DayType.WEEKDAY);
+        thermo.setCurrentTemp (70);
+        thermo.setTimeSinceLastRun (7);
+        thermo.setMinLag (7);
+        thermo.setOverride (true);
+        thermo.setRegulator(false);
+        thermo.setOverTemp (70);
+        assertFalse (thermo.turnHeaterOn (settings));
     }
 }
