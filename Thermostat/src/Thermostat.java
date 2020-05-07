@@ -32,10 +32,16 @@ public class Thermostat
         {  // Turn on the heater
             // How long? Assume 1 minute per degree (Fahrenheit)
             int timeNeeded = curTemp - dTemp;
-            if (override && regulator)              // update April 2020
-                timeNeeded = (curTemp - overTemp)/2; // update April 2020
-            else if (override)                      // update April 2020
+
+            if (override && regulator) {            // update April 2020
+                timeNeeded = (curTemp - overTemp) / 2;
+
+            }// update April 2020
+            else if (override) {                     // update April 2020
                 timeNeeded = curTemp - overTemp;
+
+            }
+
             setRunTime(timeNeeded);
             setHeaterOn(true);
             return(true);
