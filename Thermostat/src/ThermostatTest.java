@@ -83,6 +83,22 @@ public class ThermostatTest
         assertTrue (thermo.turnHeaterOn (settings));
     }
 
+    /**
+     *
+     * FINDINGS:
+     * It does not take into account if the thermostat user enters a higher override temperature, to change the value
+     * back to a positive integer, instead returning -1(VALUE)
+     * Time cannot be negative, so it should always return a positive number
+     *
+     * P_override:
+     *      TT
+     *      FT
+     *
+     * P_regulator:
+     *      TT
+     *      TF
+     */
+
 
 /*
     overTemp < currentTemp
@@ -187,11 +203,4 @@ public class ThermostatTest
         assertEquals (2, thermo.getRunTime());
     }
 
-    /**
-     *
-     * FINDINGS:
-     * It does not take into account if the thermostat user enters a higher override temperature, to change the value
-     * back to a positive integer, instead returning -1(VALUE)
-     * Time cannot be negative, so it should always return a positive number
-     */
 }
