@@ -84,7 +84,9 @@ public class ThermostatTest
     }
 
 
-
+/*
+    overTemp < currentTemp
+ */
     @Test public void testCACC_TT1()
     {
         settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
@@ -99,7 +101,9 @@ public class ThermostatTest
         thermo.turnHeaterOn(settings);
         assertEquals (2, thermo.getRunTime());
     }
-
+/*
+    overTemp > currentTemp
+ */
     @Test public void testCACC_TT2()
     {
         settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
@@ -114,7 +118,9 @@ public class ThermostatTest
         thermo.turnHeaterOn(settings);
         assertEquals (2, thermo.getRunTime());
     }
-
+/*
+    overTemp < currentTemp
+ */
     @Test public void testCACC_TF1()
     {
         settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
@@ -129,7 +135,9 @@ public class ThermostatTest
         thermo.turnHeaterOn(settings);
         assertEquals (4, thermo.getRunTime());
     }
-
+/*
+    overTemp > currentTemp
+ */
     @Test public void testCACC_TF2()
     {
         settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
@@ -144,7 +152,9 @@ public class ThermostatTest
         thermo.turnHeaterOn(settings);
         assertEquals (4, thermo.getRunTime());
     }
-
+/*
+    overTemp < currentTemp
+ */
     @Test public void testCACC_FT1()
     {
         settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
@@ -159,7 +169,9 @@ public class ThermostatTest
         thermo.turnHeaterOn(settings);
         assertEquals (2, thermo.getRunTime());
     }
-
+/*
+    overTemp > currentTemp
+ */
     @Test public void testCACC_FT2()
     {
         settings.setSetting (Period.MORNING, DayType.WEEKDAY, 70);
@@ -169,7 +181,7 @@ public class ThermostatTest
         thermo.setTimeSinceLastRun (10);
         thermo.setMinLag (5);
         thermo.setOverride (false);
-        thermo.setOverTemp (64);
+        thermo.setOverTemp (72);
         thermo.setRegulator(true);
         thermo.turnHeaterOn(settings);
         assertEquals (2, thermo.getRunTime());
